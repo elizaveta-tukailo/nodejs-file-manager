@@ -1,18 +1,29 @@
-import * as readline from 'node:readline/promises';
+import { createInterface } from 'node:readline';
 import { getUsername } from './utils/getUsername.js';
 import { showUserMessage } from './utils/showUserMessage.js';
 import { stdin as input, stdout as output } from 'node:process';
+import { checkCommand } from './utils/checkCommand.js';
 
 const init = async () => {
     const username = getUsername();
     showUserMessage(username, "greeting");
 
-    //test work with interface
-    const rl = readline.createInterface({ input, output });
-    const answer = await rl.question('What do you think of Node.js? ');
-
-    console.log(`Thank you for your valuable feedback: ${answer}`);
-
-    rl.close();
+    const rl = createInterface({ input, output });
+    rl.on('line', async (input) => {
+        try {
+            const [command, ...args] = checkCommand(input);
+            switch (command) {
+                case ".exit": rl.close(); break;
+            }
+            console.log("input", input)
+        } catch (error) {
+            console.log(error.message);
+        }
+    });
+    rl.on('SIGINT', () => rl.close());
+    rl.on('close', () => {
+        showUserMessage(username, "goodbye");
+        process.exit(0);
+    });
 }
 await init();
