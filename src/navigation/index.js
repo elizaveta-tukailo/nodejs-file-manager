@@ -1,0 +1,1 @@
+export { upToRootDirectory } from './upToRootDirectory.js';

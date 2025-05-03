@@ -4,10 +4,12 @@ import { showUserMessage } from './utils/showUserMessage.js';
 import { stdin as input, stdout as output } from 'node:process';
 import { checkCommand } from './utils/checkCommand.js';
 import { showCurrentDirectory } from './utils/showCurrentDirectory.js';
+import * as navigation from './navigation/index.js';
 
 const init = async () => {
     const username = getUsername();
     showUserMessage(username, "greeting");
+    navigation.upToRootDirectory();
     showCurrentDirectory();
     const rl = createInterface({ input, output });
     rl.on('line', async (input) => {
