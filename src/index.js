@@ -17,6 +17,7 @@ const init = async () => {
             const [command, ...args] = checkCommand(input);
             switch (command) {
                 case ".exit": rl.close(); break;
+                case "up": navigation.navigateUp();
             }
         } catch (error) {
             console.log(error.message);
