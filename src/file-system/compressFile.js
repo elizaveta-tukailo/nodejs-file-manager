@@ -5,7 +5,7 @@ import { pipeline } from 'node:stream/promises';
 export const compressFile = async ([pathToFile, pathToDestination]) => {
     try {
         if (!pathToFile) { throw new Error('Enter currect path to the file!'); }
-        if (!pathToDestination) { throw new Error('Enter destination path for copying file!'); }
+        if (!pathToDestination) { throw new Error('Enter destination path for compression file!'); }
         await pipeline(
             createReadStream(pathToFile),
             createBrotliCompress(),

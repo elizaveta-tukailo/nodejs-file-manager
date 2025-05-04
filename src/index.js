@@ -32,6 +32,7 @@ const init = async () => {
                 case "os": operationSystem(args); break;
                 case "hash": await fileSystem.calcHash(args); break;
                 case "compress": await fileSystem.compressFile(args); break;
+                case "decompress": await fileSystem.decompressFile(args); break;
                 default: throw new Error("Check command!");
             }
         } catch (error) {
