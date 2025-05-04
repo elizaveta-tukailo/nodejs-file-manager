@@ -5,6 +5,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import { checkCommand } from './utils/checkCommand.js';
 import { showCurrentDirectory } from './utils/showCurrentDirectory.js';
 import * as navigation from './navigation/index.js';
+import * as fileSystem from './file-system/index.js';
 
 const init = async () => {
     const username = getUsername();
@@ -17,9 +18,10 @@ const init = async () => {
             const [command, ...args] = checkCommand(input);
             switch (command) {
                 case ".exit": rl.close(); break;
-                case "up": navigation.navigateUp();
-                case "cd": navigation.changeDirectory(args);
-                case "ls": navigation.listFiles();
+                case "up": navigation.navigateUp(); break;
+                case "cd": navigation.changeDirectory(args); break;
+                case "ls": await navigation.listFiles(); break;
+                case "cat": await fileSystem.readFile(args); break;
             }
         } catch (error) {
             console.log(error.message);
