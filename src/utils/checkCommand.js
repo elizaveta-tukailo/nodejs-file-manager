@@ -1,5 +1,5 @@
 const VALID_COMMANDS = new Set([
-    'up', 'cd', 'ls', 'cat', 'add', 'rn', 'cp', 'mv', 'rm', 'os', 'hash', 'compress', 'decompress', '.exit'
+    'up', 'cd', 'ls', 'cat', 'add', 'mkdir', 'rn', 'cp', 'mv', 'rm', 'os', 'hash', 'compress', 'decompress', '.exit'
 ]);
 
 export const checkCommand = (input) => {

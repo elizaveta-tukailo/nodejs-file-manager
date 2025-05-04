@@ -23,6 +23,7 @@ const init = async () => {
                 case "ls": await navigation.listFiles(); break;
                 case "cat": await fileSystem.readFile(args); break;
                 case "add": await fileSystem.createFile(args); break;
+                case "mkdir": await fileSystem.createDirectory(args); break;
             }
         } catch (error) {
             console.log(error.message);
