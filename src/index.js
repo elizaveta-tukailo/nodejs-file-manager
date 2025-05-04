@@ -18,6 +18,7 @@ const init = async () => {
             switch (command) {
                 case ".exit": rl.close(); break;
                 case "up": navigation.navigateUp();
+                case "cd": navigation.changeDirectory(args);
             }
         } catch (error) {
             console.log(error.message);
