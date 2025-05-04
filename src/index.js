@@ -25,6 +25,7 @@ const init = async () => {
                 case "add": await fileSystem.createFile(args); break;
                 case "mkdir": await fileSystem.createDirectory(args); break;
                 case "rn": await fileSystem.renameFile(args); break;
+                case "cp": await fileSystem.copyFile(args); break;
             }
         } catch (error) {
             console.log(error.message);
