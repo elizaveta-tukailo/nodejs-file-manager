@@ -19,6 +19,7 @@ const init = async () => {
                 case ".exit": rl.close(); break;
                 case "up": navigation.navigateUp();
                 case "cd": navigation.changeDirectory(args);
+                case "ls": navigation.listFiles();
             }
         } catch (error) {
             console.log(error.message);
