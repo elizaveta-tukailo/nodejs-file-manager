@@ -30,6 +30,7 @@ const init = async () => {
                 case "mv": await fileSystem.moveFile(args); break;
                 case "rm": await fileSystem.deleteFile(args); break;
                 case "os": operationSystem(args); break;
+                case "hash": await fileSystem.calcHash(args); break;
                 default: throw new Error("Check command!");
             }
         } catch (error) {
