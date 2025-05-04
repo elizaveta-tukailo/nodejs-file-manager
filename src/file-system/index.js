@@ -4,3 +4,4 @@ export { createDirectory } from './createDirectory.js';
 export { renameFile } from './renameFile.js';
 export { copyFile } from './copyFile.js';
 export { moveFile } from './moveFile.js';
+export { deleteFile } from './deleteFile.js';

@@ -27,6 +27,7 @@ const init = async () => {
                 case "rn": await fileSystem.renameFile(args); break;
                 case "cp": await fileSystem.copyFile(args); break;
                 case "mv": await fileSystem.moveFile(args); break;
+                case "rm": await fileSystem.deleteFile(args); break;
             }
         } catch (error) {
             console.log(error.message);
