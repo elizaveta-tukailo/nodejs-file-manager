@@ -33,7 +33,7 @@ const init = async () => {
                 case "hash": await fileSystem.calcHash(args); break;
                 case "compress": await fileSystem.compressFile(args); break;
                 case "decompress": await fileSystem.decompressFile(args); break;
-                default: throw new Error("Check command!");
+                default: throw new Error("Invalid input!");
             }
         } catch (error) {
             console.log(error.message);
