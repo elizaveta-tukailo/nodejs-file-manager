@@ -6,6 +6,7 @@ import { checkCommand } from './utils/checkCommand.js';
 import { showCurrentDirectory } from './utils/showCurrentDirectory.js';
 import * as navigation from './navigation/index.js';
 import * as fileSystem from './file-system/index.js';
+import { operationSystem } from './operation-system/index.js';
 
 const init = async () => {
     const username = getUsername();
@@ -28,6 +29,8 @@ const init = async () => {
                 case "cp": await fileSystem.copyFile(args); break;
                 case "mv": await fileSystem.moveFile(args); break;
                 case "rm": await fileSystem.deleteFile(args); break;
+                case "os": operationSystem(args); break;
+                default: throw new Error("Check command!");
             }
         } catch (error) {
             console.log(error.message);
