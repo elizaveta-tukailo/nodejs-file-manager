@@ -1,16 +1,17 @@
 import { showCurrentDirectory } from '../utils/showCurrentDirectory.js';
-import { createReadStream, createWriteStream } from 'node:fs';
 import { join, basename } from 'node:path';
+import { unlink } from 'fs/promises';
 import { pipeline } from 'stream/promises';
+import { createReadStream, createWriteStream } from 'node:fs';
 
-export const copyFile = async ([pathToFile, pathToNewDirectory]) => {
+export const moveFile = async ([pathToFile, pathToNewDirectory]) => {
     try {
         if (!pathToFile) {
             throw new Error('Enter currect path to the file!');
         }
         if (!pathToNewDirectory) {
             throw new Error(
-              'Enter target path for copying file!'
+              'Enter target path for moving file!'
             );
         }
         const fileName = basename(pathToFile);
@@ -19,9 +20,10 @@ export const copyFile = async ([pathToFile, pathToNewDirectory]) => {
             createReadStream(pathToFile),
             createWriteStream(targetPath)
         );
-        console.log(`The file ${fileName} has been successfully copied to ${pathToNewDirectory}\n`);
+        await unlink(pathToFile);
+        console.log(`The file ${fileName} has been successfully moved to ${pathToNewDirectory}\n`);
         showCurrentDirectory();
     } catch (error) {
-        console.error(`Copy file operation failed! ${error.message}\n`);
+        console.log(`Mv operation failed! ${error.message}`);
     }
 }
