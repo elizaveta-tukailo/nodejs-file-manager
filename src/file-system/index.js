@@ -6,3 +6,4 @@ export { copyFile } from './copyFile.js';
 export { moveFile } from './moveFile.js';
 export { deleteFile } from './deleteFile.js';
 export { calcHash } from './calcHash.js';
+export { compressFile } from './compressFile.js';

@@ -31,6 +31,7 @@ const init = async () => {
                 case "rm": await fileSystem.deleteFile(args); break;
                 case "os": operationSystem(args); break;
                 case "hash": await fileSystem.calcHash(args); break;
+                case "compress": await fileSystem.compressFile(args); break;
                 default: throw new Error("Check command!");
             }
         } catch (error) {
