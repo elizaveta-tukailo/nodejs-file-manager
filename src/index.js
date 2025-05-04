@@ -22,6 +22,7 @@ const init = async () => {
                 case "cd": navigation.changeDirectory(args); break;
                 case "ls": await navigation.listFiles(); break;
                 case "cat": await fileSystem.readFile(args); break;
+                case "add": await fileSystem.createFile(args); break;
             }
         } catch (error) {
             console.log(error.message);
